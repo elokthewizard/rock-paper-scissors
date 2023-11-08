@@ -10,12 +10,14 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * 3)]; 
 }
 
-const computerSelection = getComputerChoice();
-console.log("compSel: " + computerSelection);
-const playerSelection = prompt("Rock, paper, or scissors?").toUpperCase()
-console.log("userSel: " + playerSelection)
+
+// console.log("compSel: " + computerSelection);
+// console.log("userSel: " + playerSelection)
 
 function playRound () {
+    const computerSelection = getComputerChoice();
+    const playerSelection = prompt("Rock, paper, or scissors?").toUpperCase()
+
     if (playerSelection === computerSelection) {
         console.log("Tie!");
     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
@@ -33,4 +35,8 @@ function playRound () {
     }
 }
 
+playRound()
+playRound()
+playRound()
+playRound()
 playRound()
