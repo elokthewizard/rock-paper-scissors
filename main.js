@@ -22,6 +22,8 @@ function playRound () {
         console.log("Tie!");
     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
         console.log("Paper beats rock, try again!");
+    } else if (playerSelection === choices[0] && computerSelection === choices[2]) {
+        console.log("Rock beats scissors, nice!");
     }
 }
 
