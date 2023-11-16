@@ -1,9 +1,10 @@
 const choices = ["ROCK", "PAPER", "SCISSORS"];
 
-// console.log(choices)
-// console.log(choices[0])
-// console.log(choices[1])
-// console.log(choices[2])
+const rockButton = document.createElement('button')
+const paperButton = document.createElement('button')
+const scissorButton = document.createElement('button')
+
+
 let userScore = 0
 let computerScore = 0
 
@@ -11,9 +12,6 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * 3)]; 
 }
 
-
-// console.log("compSel: " + computerSelection);
-// console.log("userSel: " + playerSelection)
 
 function playRound () {
     const computerSelection = getComputerChoice();
@@ -43,10 +41,6 @@ function playRound () {
 }
 
 function playGame(){
-    playRound();
-    playRound();
-    playRound();
-    playRound();
     playRound();
     if (userScore > computerScore) {
         console.log("You win!")
