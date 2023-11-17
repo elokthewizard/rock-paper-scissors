@@ -25,51 +25,47 @@ div.appendChild(paperButton);
 div.appendChild(scissorButton);
 
 div.addEventListener('click', (event) => {
-    let target = event.target;
-
-    switch(target.button){
-        case rockButton:
-            playerSelection = "Rock";
-            break;
-        case paperButton:
-            playerSelection = "Paper";
-            break;
-        case scissorButton:
-            playerSelection = "Scissors"
+    if (event.target.id == rockButton) {
+        playerSelection = "Rock"
+        console.log(playerSelection)
+    } else if (event.target.id == paperButton){
+        playerSelection = 'Paper'
+        console.log(playerSelection)
+    } else if (event.target.id == scissorButton){
+        playerSelection = "Scissors"
     }
 })
 
-console.log(playerSelection)
+
 
 let userScore = 0
 let computerScore = 0
 
-// function playRound () {
-//     const computerSelection = getComputerChoice();
-//     const playerSelection = prompt("Rock, paper, or scissors?").toUpperCase()
+ function playRound () {
+     const computerSelection = getComputerChoice();
 
-//     if (playerSelection === computerSelection) {
-//         console.log("Tie!");
-//     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
-//         console.log("Paper beats rock, try again.");
-//         computerScore = computerScore++;
-//     } else if (playerSelection === choices[0] && computerSelection === choices[2]) {
-//         console.log("Rock beats scissors, nice!");
-//         userScore = userScore++;
-//     } else if (playerSelection === choices[1] && computerSelection === choices[0]) {
-//         console.log("Paper beats rock, nice!");
-//         userScore = userScore++;
-//     } else if (playerSelection === choices[1] && computerSelection === choices[2]) {
-//         console.log("Scissors beat paper, try again.");
-//         computerScore = computerScore++;
-//     } else if (playerSelection === choices[2] && computerSelection === choices[0]) {
-//         console.log("Rock beats scissors, sorry.");
-//         computerScore = computerScore++;
-//     } else if (playerSelection === choices[2] && computerSelection === choices[1]) {
-//         console.log("Scissors beats paper, nice!");
-//         userScore = userScore++;
-//     }
-// }
+     if (playerSelection === computerSelection) {
+         console.log("Tie!");
+     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
+         console.log("Paper beats rock, try again.");
+         computerScore = computerScore++;
+     } else if (playerSelection === choices[0] && computerSelection === choices[2]) {
+         console.log("Rock beats scissors, nice!");
+         userScore = userScore++;
+     } else if (playerSelection === choices[1] && computerSelection === choices[0]) {
+         console.log("Paper beats rock, nice!");
+         userScore = userScore++;
+     } else if (playerSelection === choices[1] && computerSelection === choices[2]) {
+         console.log("Scissors beat paper, try again.");
+         computerScore = computerScore++;
+     } else if (playerSelection === choices[2] && computerSelection === choices[0]) {
+         console.log("Rock beats scissors, sorry.");
+         computerScore = computerScore++;
+     } else if (playerSelection === choices[2] && computerSelection === choices[1]) {
+         console.log("Scissors beats paper, nice!");
+         userScore = userScore++;
+     }
+ }
 
 // function playGame(){
 //     playRound();
