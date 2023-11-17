@@ -4,11 +4,6 @@ const choices = ["ROCK", "PAPER", "SCISSORS"];
 
 let playerSelection;
 
-function getComputerChoice() {
-    return choices[Math.floor(Math.random() * 3)]; 
-}
-
-
 const div = document.createElement('div')
 div.classList.add('gameSpace');
 document.body.appendChild(div);
@@ -29,44 +24,52 @@ div.appendChild(rockButton);
 div.appendChild(paperButton);
 div.appendChild(scissorButton);
 
-div.addEventListener('click', (event) => {
-    if (event.target.id == 'rockButton') {
-        playerSelection = "Rock"
+function getComputerChoice() {
+    return choices[Math.floor(Math.random() * 3)]; 
+}
+
+div.addEventListener('click', (e) => {
+    if (e.target.id == 'rockButton') {
+        playerSelection = rockButton.textContent;
+        console.log(playerSelection);
+    } else if (e.target.id == 'paperButton'){
+        playerSelection = paperButton.textContent.toUpperCase()
         console.log(playerSelection)
-        playRound()
-    } else if (event.target.id == 'paperButton'){
-        playerSelection = 'Paper'
-        console.log(playerSelection)
-    } else if (event.target.id == 'scissorButton'){
-        playerSelection = "Scissors"
+    } else if (e.target.id == 'scissorButton'){
+        playerSelection = scissorButton.textContent.toUpperCase()
         console.log(playerSelection)
     }
+    console.log(e)
+    playRound()
 })
 
+
 function playRound () {
-    
+    console.log("playing...")
+    playerSelection.toUpperCase()
     const computerSelection = getComputerChoice();
+    console.log(computerSelection)
 
     if (playerSelection === computerSelection) {
-         console.log("Tie!");
+        console.log("Tie!");
     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
-         console.log("Paper beats rock, try again.");
-         computerScore = computerScore++;
+        console.log("Paper beats rock, try again.");
+        computerScore = computerScore++;
     } else if (playerSelection === choices[0] && computerSelection === choices[2]) {
-         console.log("Rock beats scissors, nice!");
-         userScore = userScore++;
+        console.log("Rock beats scissors, nice!");
+        userScore = userScore++;
     } else if (playerSelection === choices[1] && computerSelection === choices[0]) {
-         console.log("Paper beats rock, nice!");
-         userScore = userScore++;
+        console.log("Paper beats rock, nice!");
+        userScore = userScore++;
     } else if (playerSelection === choices[1] && computerSelection === choices[2]) {
-         console.log("Scissors beat paper, try again.");
-         computerScore = computerScore++;
+        console.log("Scissors beat paper, try again.");
+        computerScore = computerScore++;
     } else if (playerSelection === choices[2] && computerSelection === choices[0]) {
-         console.log("Rock beats scissors, sorry.");
-         computerScore = computerScore++;
+        console.log("Rock beats scissors, sorry.");
+        computerScore = computerScore++;
     } else if (playerSelection === choices[2] && computerSelection === choices[1]) {
-         console.log("Scissors beats paper, nice!");
-         userScore = userScore++;
+        console.log("Scissors beats paper, nice!");
+        userScore = userScore++;
     }
 }
 
