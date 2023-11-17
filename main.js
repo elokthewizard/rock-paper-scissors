@@ -29,24 +29,23 @@ function getComputerChoice() {
 }
 
 div.addEventListener('click', (e) => {
-    if (e.target.id == 'rockButton') {
-        playerSelection = rockButton.textContent;
-        console.log(playerSelection);
-    } else if (e.target.id == 'paperButton'){
-        playerSelection = paperButton.textContent.toUpperCase()
-        console.log(playerSelection)
-    } else if (e.target.id == 'scissorButton'){
-        playerSelection = scissorButton.textContent.toUpperCase()
-        console.log(playerSelection)
-    }
+    switch (e.target.id) {
+        case 'rockButton':
+            playerSelection = rockButton.textContent.toUpperCase();
+            break;
+        case 'paperButton':
+            playerSelection = paperButton.textContent.toUpperCase();
+            break;
+        case 'scissorButton':
+            playerSelection = scissorButton.textContent.toUpperCase();
+            break;
+    }      
     console.log(e)
     playRound()
 })
 
-
 function playRound () {
     console.log("playing...")
-    playerSelection.toUpperCase()
     const computerSelection = getComputerChoice();
     console.log(computerSelection)
 
