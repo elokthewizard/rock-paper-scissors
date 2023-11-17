@@ -1,9 +1,17 @@
 const choices = ["ROCK", "PAPER", "SCISSORS"];
+
+let playerSelection;
+
+function getComputerChoice() {
+    return choices[Math.floor(Math.random() * 3)]; 
+}
+
 const div = document.createElement('div')
 div.classList.add('gameSpace');
 document.body.appendChild(div);
 
 const rockButton = document.createElement('button');
+rockButton.id = rockButton
 rockButton.textContent = "Rock";
 
 const paperButton = document.createElement('button');
@@ -16,14 +24,25 @@ div.appendChild(rockButton);
 div.appendChild(paperButton);
 div.appendChild(scissorButton);
 
+div.addEventListener('click', (event) => {
+    let target = event.target;
 
-// let userScore = 0
-// let computerScore = 0
+    switch(target.button){
+        case rockButton:
+            playerSelection = "Rock";
+            break;
+        case paperButton:
+            playerSelection = "Paper";
+            break;
+        case scissorButton:
+            playerSelection = "Scissors"
+    }
+})
 
-// function getComputerChoice() {
-//     return choices[Math.floor(Math.random() * 3)]; 
-// }
+console.log(playerSelection)
 
+let userScore = 0
+let computerScore = 0
 
 // function playRound () {
 //     const computerSelection = getComputerChoice();
