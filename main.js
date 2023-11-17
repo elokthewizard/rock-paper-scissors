@@ -4,9 +4,9 @@ const choices = ["ROCK", "PAPER", "SCISSORS"];
 
 let playerSelection;
 
-const div = document.createElement('div')
-div.classList.add('gameSpace');
-document.body.appendChild(div);
+const playSpace = document.createElement('div')
+playSpace.classList.add('playSpace');
+document.body.appendChild(playSpace);
 
 const rockButton = document.createElement('button');
 rockButton.id = 'rockButton'
@@ -20,15 +20,19 @@ const scissorButton = document.createElement('button');
 scissorButton.id = 'scissorButton'
 scissorButton.textContent = "Scissors";
 
-div.appendChild(rockButton);
-div.appendChild(paperButton);
-div.appendChild(scissorButton);
+playSpace.appendChild(rockButton);
+playSpace.appendChild(paperButton);
+playSpace.appendChild(scissorButton);
+
+
+let resultSpace = document.createElement('div')
+
 
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * 3)]; 
 }
 
-div.addEventListener('click', (e) => {
+playSpace.addEventListener('click', (e) => {
     switch (e.target.id) {
         case 'rockButton':
             playerSelection = rockButton.textContent.toUpperCase();
@@ -44,33 +48,41 @@ div.addEventListener('click', (e) => {
 })
 
 function playRound () {
-    console.log("playing...")
     const computerSelection = getComputerChoice();
-    console.log(computerSelection)
+
+    console.log("playing...")
     console.log(`You chose ${playerSelection}, and I chose ${computerSelection}`)
 
     if (playerSelection === computerSelection) {
-        console.log("Tie!");
+        resultSpace.textContent = "Tie!";
+        playSpace.appendChild(resultSpace);
     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
-        console.log("Paper beats rock, try again.");
+        resultSpace.textContent = "Paper beats rock, try again.";
+        playSpace.appendChild(resultSpace);
         computerScore = computerScore++;
     } else if (playerSelection === choices[0] && computerSelection === choices[2]) {
-        console.log("Rock beats scissors, nice!");
+        resultSpace.textContent = "Rock beats scissors, nice!";
+        playSpace.appendChild(resultSpace);
         userScore = userScore++;
     } else if (playerSelection === choices[1] && computerSelection === choices[0]) {
-        console.log("Paper beats rock, nice!");
+        resultSpace.textContent = "Paper beats rock, nice!";
+        playSpace.appendChild(resultSpace);
         userScore = userScore++;
     } else if (playerSelection === choices[1] && computerSelection === choices[2]) {
-        console.log("Scissors beat paper, try again.");
+        resultSpace.textContent = "Scissors beat paper, try again.";
+        playSpace.appendChild(resultSpace);
         computerScore = computerScore++;
     } else if (playerSelection === choices[2] && computerSelection === choices[0]) {
-        console.log("Rock beats scissors, sorry.");
+        resultSpace.textContent = "Rock beats scissors, sorry.";
+        playSpace.appendChild(resultSpace);
         computerScore = computerScore++;
     } else if (playerSelection === choices[2] && computerSelection === choices[1]) {
-        console.log("Scissors beats paper, nice!");
+        resultSpace.textContent = "Scissors beats paper, nice!";
+        playSpace.appendChild(resultSpace);
         userScore = userScore++;
     }
 }
+
 
 
 // function playGame(){
