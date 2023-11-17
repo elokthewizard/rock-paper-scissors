@@ -40,7 +40,6 @@ div.addEventListener('click', (e) => {
             playerSelection = scissorButton.textContent.toUpperCase();
             break;
     }      
-    console.log(e)
     playRound()
 })
 
@@ -48,6 +47,7 @@ function playRound () {
     console.log("playing...")
     const computerSelection = getComputerChoice();
     console.log(computerSelection)
+    console.log(`You chose ${playerSelection}, and I chose ${computerSelection}`)
 
     if (playerSelection === computerSelection) {
         console.log("Tie!");
