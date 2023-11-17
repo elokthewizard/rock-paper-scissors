@@ -24,10 +24,6 @@ playSpace.appendChild(rockButton);
 playSpace.appendChild(paperButton);
 playSpace.appendChild(scissorButton);
 
-
-let resultSpace = document.createElement('div')
-
-
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * 3)]; 
 }
@@ -51,36 +47,46 @@ function playRound () {
     const computerSelection = getComputerChoice();
 
     console.log("playing...")
-    console.log(`You chose ${playerSelection}, and I chose ${computerSelection}`)
+    const resultMessage = document.createElement('div');
+    const resultSpace = document.createElement('div')
+    resultMessage.textContent = `You chose ${playerSelection}, and I chose ${computerSelection}`
 
     if (playerSelection === computerSelection) {
-        resultSpace.textContent = "Tie!";
+        playSpace.appendChild(resultMessage);
+        resultSpace.textContent = "It's a tie!";
         playSpace.appendChild(resultSpace);
     } else if (playerSelection === choices[0] && computerSelection === choices[1]) {
+        playSpace.appendChild(resultMessage);
         resultSpace.textContent = "Paper beats rock, try again.";
         playSpace.appendChild(resultSpace);
         computerScore = computerScore++;
     } else if (playerSelection === choices[0] && computerSelection === choices[2]) {
+        playSpace.appendChild(resultMessage);
         resultSpace.textContent = "Rock beats scissors, nice!";
         playSpace.appendChild(resultSpace);
         userScore = userScore++;
     } else if (playerSelection === choices[1] && computerSelection === choices[0]) {
+        playSpace.appendChild(resultMessage);
         resultSpace.textContent = "Paper beats rock, nice!";
         playSpace.appendChild(resultSpace);
         userScore = userScore++;
     } else if (playerSelection === choices[1] && computerSelection === choices[2]) {
+        playSpace.appendChild(resultMessage);
         resultSpace.textContent = "Scissors beat paper, try again.";
         playSpace.appendChild(resultSpace);
         computerScore = computerScore++;
     } else if (playerSelection === choices[2] && computerSelection === choices[0]) {
+        playSpace.appendChild(resultMessage);
         resultSpace.textContent = "Rock beats scissors, sorry.";
         playSpace.appendChild(resultSpace);
         computerScore = computerScore++;
     } else if (playerSelection === choices[2] && computerSelection === choices[1]) {
+        playSpace.appendChild(resultMessage);
         resultSpace.textContent = "Scissors beats paper, nice!";
         playSpace.appendChild(resultSpace);
         userScore = userScore++;
     }
+    
 }
 
 
