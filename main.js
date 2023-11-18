@@ -89,26 +89,25 @@ function playRound () {
         gameSpace.appendChild(resultSpace);
         playerScore = playerScore + 1;
     }
-    resultMessage.textContent = `You chose ${playerSelection}, and I chose ${computerSelection}`;
-    score.textContent = `player score: ${playerScore} computer score: ${computerScore}`;
-    gameSpace.appendChild(score)
 
+    resultMessage.textContent = `You chose ${playerSelection}, and I chose ${computerSelection}`;
+    scoreSpace.textContent = `player score: ${playerScore} computer score: ${computerScore}`;
+    gameSpace.appendChild(scoreSpace)
     
     // check win conditions
     if (playerScore === 5 && playerScore > computerScore){
         gameSpace.append('You Win!');
-        gameSpace.removeChild(rockButton)
-        gameSpace.removeChild(paperButton);
-        gameSpace.removeChild(scissorButton);
-        gameSpace.appendChild(playAgain);
-    } else if (computerScore === 5 && computerScore > playerScore){
-        gameSpace.append('You Lose!');
         gameSpace.removeChild(rockButton);
         gameSpace.removeChild(paperButton);
         gameSpace.removeChild(scissorButton);
-        gameSpace.appendChild(playAgain);
+    } else if (computerScore === 5 && computerScore > playerScore){
+        gameSpace.append('You Lose!');
+        gameSpace.removeChild(rockButton)
+        gameSpace.removeChild(paperButton);
+        gameSpace.removeChild(scissorButton);
     }
-        
+    
+    
     
 }
 
