@@ -5,21 +5,25 @@ const choices = ["ROCK", "PAPER", "SCISSORS"];
 let playerSelection;
 
 const gameSpace = document.createElement('div')
+
 gameSpace.classList.add('gameSpace');
 document.body.appendChild(gameSpace);
 const scoreSpace = document.createElement('p')
 
 const rockButton = document.createElement('button');
-rockButton.id = 'rockButton'
-rockButton.textContent = "Rock";
-
 const paperButton = document.createElement('button');
-paperButton.id = 'paperButton'
-paperButton.textContent = "Paper";
-
 const scissorButton = document.createElement('button');
+const playAgain = document.createElement('button')
+
+rockButton.id = 'rockButton'
+paperButton.id = 'paperButton'
 scissorButton.id = 'scissorButton'
+playAgain.id = 'playAgain'
+
+rockButton.textContent = "Rock";
+paperButton.textContent = "Paper";
 scissorButton.textContent = "Scissors";
+playAgain.textContent = 'Play Again?'
 
 gameSpace.appendChild(rockButton);
 gameSpace.appendChild(paperButton);
@@ -49,8 +53,6 @@ let resultSpace = document.createElement('div');
 
 function playRound () {
     const computerSelection = getComputerChoice();
-
-    resultMessage.textContent = `You chose ${playerSelection}, and I chose ${computerSelection}`;
 
     if (playerSelection === computerSelection) {
         gameSpace.appendChild(resultMessage);
@@ -87,17 +89,26 @@ function playRound () {
         gameSpace.appendChild(resultSpace);
         playerScore = playerScore + 1;
     }
+    resultMessage.textContent = `You chose ${playerSelection}, and I chose ${computerSelection}`;
+    score.textContent = `player score: ${playerScore} computer score: ${computerScore}`;
+    gameSpace.appendChild(score)
 
-    // let score = `player score: ${playerScore} computer score: ${computerScore}`
-    scoreSpace.textContent = `player score: ${playerScore} computer score: ${computerScore}`;
-    gameSpace.appendChild(scoreSpace)
     
     // check win conditions
     if (playerScore === 5 && playerScore > computerScore){
         gameSpace.append('You Win!');
+        gameSpace.removeChild(rockButton)
+        gameSpace.removeChild(paperButton);
+        gameSpace.removeChild(scissorButton);
+        gameSpace.appendChild(playAgain);
     } else if (computerScore === 5 && computerScore > playerScore){
         gameSpace.append('You Lose!');
+        gameSpace.removeChild(rockButton);
+        gameSpace.removeChild(paperButton);
+        gameSpace.removeChild(scissorButton);
+        gameSpace.appendChild(playAgain);
     }
+        
     
 }
 
